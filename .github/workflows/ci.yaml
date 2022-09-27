@@ -1,0 +1,17 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  integrate:
+    name: CI
+    runs-on: ubuntu-latest
+    container: node:16
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Test
+        run: npm ci && npm test
